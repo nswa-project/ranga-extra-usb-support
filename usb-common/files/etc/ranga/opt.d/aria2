@@ -1,0 +1,15 @@
+#!/bin/sh /etc/rc.common
+
+START=60
+USE_PROCD=1
+
+secret=`uci get nswa.misc.aria2_rpc_secret`
+
+start_service() {
+	procd_open_instance
+	procd_set_param env HOME=/mnt/main USER=extensions LOGNAME=extensions
+	procd_set_param nice 5
+	procd_set_param command /lib/ranga/libexec/su 1000 /usr/bin/aria2c --conf-path=/etc/aria2.conf --rpc-secret="$secret"
+	procd_set_param respawn
+	procd_close_instance
+}

@@ -1,0 +1,4 @@
+name: USB xHCI Support
+version: 0.1
+desc: USB xHCI drivers and utils for NSWA Ranga.
+actions: 

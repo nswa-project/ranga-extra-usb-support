@@ -1,0 +1,12 @@
+#!/bin/sh
+
+case "$1" in
+mount)
+	mkdir -p "/mnt/$3"
+	mount -t vfat -o 'uid=1000,gid=1000,fmask=113,nosuid,nodev,noexec' "/dev/$2" "/mnt/$3"
+	mount -t exfat -o 'uid=1000,gid=1000,fmask=113,nosuid,nodev,noexec' "/dev/$2" "/mnt/$3"
+	;;
+umount)
+	umount "/mnt/$3"
+	;;
+esac

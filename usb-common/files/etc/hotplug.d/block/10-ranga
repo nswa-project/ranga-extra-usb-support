@@ -1,0 +1,15 @@
+#!/bin/sh
+
+[ "${DEVTYPE}" != "partition" ] && exit 0
+[ "${DEVNAME}" != "sda1" ] && exit 0
+
+logger -t ranga-hpb "$DEVNAME: $ACTION, $DEVPATH"
+
+case "$ACTION" in
+add)
+	/lib/ranga/usbutils/hpb mount "${DEVNAME}" "main"
+	;;
+remove)
+	/lib/ranga/usbutils/hpb umount "${DEVNAME}" "main"
+	;;
+esac
