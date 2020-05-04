@@ -10,7 +10,7 @@ define Package/ranga-usb-common
   SECTION:=ranga
   CATEGORY:=NSWA Ranga
   SUBMENU:=Extra
-  DEPENDS:=+kmod-usb-storage +@BUILD_PATENTED +kmod-fs-vfat +kmod-fs-exfat +aria2 +ca-bundle +samba36-server
+  DEPENDS:=+kmod-usb-storage +libpthread +@BUILD_PATENTED +kmod-fs-vfat +kmod-fs-exfat +aria2 +ca-bundle +samba36-server
   TITLE:=NSWA USB comment
 endef
 
@@ -25,7 +25,7 @@ define Build/Prepare
 endef
 
 define Build/Compile
-	$(CC) $(CFLAGS) -o $(PKG_BUILD_DIR)/src/aumount $(LDFLAGS) $(PKG_BUILD_DIR)/src/aumount.c -pthread
+	$(TARGET_CC) $(TARGET_CFLAGS) -o $(PKG_BUILD_DIR)/src/aumount $(TARGET_LDFLAGS) $(PKG_BUILD_DIR)/src/aumount.c -pthread
 endef
 
 define Package/ranga-usb-common/install
