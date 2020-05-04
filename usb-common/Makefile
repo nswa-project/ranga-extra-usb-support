@@ -25,7 +25,7 @@ define Build/Prepare
 endef
 
 define Build/Compile
-	$(CC) $(CFLAGS) -o $(PKG_BUILD_DIR)/src/aumount $(LDFLAGS) $(PKG_BUILD_DIR)/src/aumount.c -pthread 2>&1
+	$(CC) $(CFLAGS) -o $(PKG_BUILD_DIR)/src/aumount $(LDFLAGS) $(PKG_BUILD_DIR)/src/aumount.c -pthread
 endef
 
 define Package/ranga-usb-common/install
